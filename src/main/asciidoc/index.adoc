@@ -1,0 +1,66 @@
+= *DEMO API*
+
+{empty} +
+
+== # REST Endpoints
+
+{empty} +
+
+=== *GET api/dataElements*
+
+{empty} +
+
+.Request
+include::{snippets}/get-data-elements/http-request.adoc[]
+
+.Response
+include::{snippets}/get-data-elements/http-response.adoc[]
+
+{empty} +
+
+==== Sample response Headers
+
+include::{snippets}/get-data-elements/response-headers.adoc[]
+
+{empty} +
+
+==== Sample response Fields
+
+include::{snippets}/get-data-elements/response-fields.adoc[]
+
+{empty} +
+
+.CURL request
+
+include::{snippets}/get-data-elements/curl-request.adoc[]
+
+{empty} +
+{empty} +
+
+=== *GET api/dataElementGroups*
+
+{empty} +
+
+.Request
+include::{snippets}/get-data-element-groups/http-request.adoc[]
+
+.Response
+include::{snippets}/get-data-element-groups/http-response.adoc[]
+
+{empty} +
+
+==== Sample response Headers
+
+include::{snippets}/get-data-element-groups/response-headers.adoc[]
+
+{empty} +
+
+==== Sample response Fields
+
+include::{snippets}/get-data-element-groups/response-fields.adoc[]
+
+{empty} +
+
+.CURL request
+
+include::{snippets}/get-data-element-groups/curl-request.adoc[]
