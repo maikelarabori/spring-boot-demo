@@ -51,7 +51,7 @@ So, to test it we can just run:
 > **mvn package**
 
 This will run all tests and create an index.html at:
-*dhis2-demo/target/generated-docs/index.html*
+*spring-boot-demo/target/generated-docs/index.html*
 
 Open this file and you will find the REST API documentation.
 
