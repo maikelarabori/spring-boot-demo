@@ -1,6 +1,6 @@
 
 ## Overview
-This application contains the basic usage of a few Spring modules: Spring Boot, Spring Data JPA, Spring Security, Spring Data REST and Caching.
+This application contains the basic usage of a few Spring modules: Spring Boot, Spring Data JPA, Spring Security, Spring Data REST, Spring REST Docs and Caching.
 
 It contains four protected endpoints, which requires a basic authentication (username/password).
 Two of these endpoints defined at _DummyController.java_ are used to simulate external protected endpoints (they require authentication). Even though they are part of the same application you should see them as "external" services. This will allow the simulation of an authenticated REST call using the Spring WebClient component along with the basic authentication feature (providing an username and password).
@@ -21,7 +21,7 @@ Assuming that GIT is installed correctly, in the command line choose a folder in
 
 Then run the command:
 
-> **git clone https://maikelarabori@bitbucket.org/maikelarabori/spring-boot-demo.git**
+> **git clone https://github.com/maikelarabori/spring-boot-demo.git**
 
 
 A new folder containing all the source code should be created inside your current folder.
@@ -58,13 +58,14 @@ The simulation to "external" REST services will require an username/password as 
 3. Hit the data element groups endpoint:
 > **curl --user user:password http://localhost:8080/api/data/element/groups**
 
-## Generating the API documentation
+## Generating the REST API documentation
 
+This application uses the Spring REST Docs module.
 The documentation will be generated every time the Maven goal "package" is run.
 So, to test it we can just run:
 > **mvn package**
 
-This will run all tests and create an index.html at:
+This will run all tests and generate an index.html, containing the REST API documentation, at:
 *spring-boot-demo/target/generated-docs/index.html*
 
 Open this file and you will find the REST API documentation.
