@@ -61,7 +61,7 @@ public class DataElementGroupControllerIntegrationTest {
   }
 
   @Test
-  @DisplayName("Testing getDataElementGroups with success")
+  @DisplayName("Testing /api/data/element/groups with success")
   public void getDataElementGroups() throws Exception {
     // Given
     final DataElementGroupRoot stubResponse = stubDataElementGroupRoot();
@@ -83,7 +83,7 @@ public class DataElementGroupControllerIntegrationTest {
   }
 
   @Test
-  @DisplayName("Testing getDataElementGroups with error: Not Found")
+  @DisplayName("Testing /api/data/element-groups with error: Not Found")
   public void getDataElementGroups_notFound() throws Exception {
     // Given
     final DataElementGroupRoot nullResponse = null;

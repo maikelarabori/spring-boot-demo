@@ -62,7 +62,7 @@ public class DataElementControllerIntegrationTest {
   }
 
   @Test
-  @DisplayName("Testing getDataElements with success")
+  @DisplayName("Testing /api/data/elements with success")
   public void getDataElements() throws Exception {
     // Given
     final DataElementRoot stubResponse = StubProvider.stubDataElementRoot();
@@ -84,7 +84,7 @@ public class DataElementControllerIntegrationTest {
   }
 
   @Test
-  @DisplayName("Testing getDataElements with error: Not Found")
+  @DisplayName("Testing /api/data/elements with error: Not Found")
   public void getDataElements_notFound() throws Exception {
     // Given
     final DataElementRoot nullResponse = null;
@@ -93,7 +93,7 @@ public class DataElementControllerIntegrationTest {
     when(dataElementsGetEndPoint.consume(any(EndpointParams.class))).thenReturn(nullResponse);
 
     // Then
-    this.mockMvc.perform(get("/api/dataElements"))
+    this.mockMvc.perform(get("/api/data/elements"))
         .andExpect(status().isNotFound());
   }
 }
