@@ -52,11 +52,11 @@ The simulation to "external" REST services will require an username/password as 
 
 *The users API is just a test API  created to facilitate the tests backed by a in-memory database.*
 
-2. Hit the data elements endpoint:
-> **curl --user user:password http://localhost:8080/api/data/elements**
+2. Hit the vehicle makes endpoint:
+> **curl --user user:password http://localhost:8080/api/vehicles/makes**
 
-3. Hit the data element groups endpoint:
-> **curl --user user:password http://localhost:8080/api/data/element/groups**
+3. Hit the vehicle makes groups endpoint:
+> **curl --user user:password http://localhost:8080/api/vehicles/makes/groups**
 
 ## Generating the REST API documentation
 

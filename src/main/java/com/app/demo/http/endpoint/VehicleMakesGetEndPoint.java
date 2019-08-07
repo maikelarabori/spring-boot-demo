@@ -3,7 +3,7 @@ package com.app.demo.http.endpoint;
 import static org.springframework.util.Assert.hasLength;
 import static org.springframework.util.Assert.notNull;
 
-import com.app.demo.dto.DataElementRoot;
+import com.app.demo.dto.VehicleMakeRoot;
 import com.app.demo.http.AuthWebClient;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
  *
  * @see GetEndPoint
  */
-@Component("dataElementsGetEndPoint")
-public class DataElementsGetEndPoint implements GetEndPoint<EndpointParams, DataElementRoot> {
+@Component
+public class VehicleMakesGetEndPoint implements GetEndPoint<EndpointParams, VehicleMakeRoot> {
 
-  private static final String END_POINT = "/api/external/data-elements";
+  private static final String END_POINT = "/api/external/vehicles-makes";
 
   private final AuthWebClient authWebClient;
 
-  public DataElementsGetEndPoint(final AuthWebClient authWebClient) {
+  public VehicleMakesGetEndPoint(final AuthWebClient authWebClient) {
     this.authWebClient = authWebClient;
   }
 
@@ -36,15 +36,15 @@ public class DataElementsGetEndPoint implements GetEndPoint<EndpointParams, Data
    * Attribute: expireAfterWrite=1m
    *
    * @param params to feed the endpoint query
-   * @return a DataElementRoot object encapsulating the original response.
+   * @return a VehicleMakeRoot object encapsulating the original response.
    */
   @Override
-  @Cacheable("dataElementRoot")
-  public DataElementRoot consume(final EndpointParams params) {
+  @Cacheable("vehicleMakeRoot")
+  public VehicleMakeRoot consume(final EndpointParams params) {
     notNull(params, "params: cannot be null");
     hasLength(params.getFields(), "params.fields: cannot be null/empty");
 
-    return authWebClient.get(DataElementRoot.class,
+    return authWebClient.get(VehicleMakeRoot.class,
         END_POINT + "?paging={hasPagination}&fields={fields}",
         params.getPaging(), params.getFields());
   }

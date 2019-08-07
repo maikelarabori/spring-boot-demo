@@ -10,23 +10,23 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The representation of a data element.
+ * The representation of a vehicle make.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(NON_NULL)
-public class DataElement extends Data {
+public class VehicleMake extends Vehicle {
   private static final Long serialVersionUID = 1L;
 
-  private List<DataElementGroup> dataElementGroups;
+  private List<VehicleMakeGroup> vehicleMakeGroups;
 
   @JsonProperty("groups")
-  public List<DataElementGroup> getDataElementGroups() {
-    return dataElementGroups;
+  public List<VehicleMakeGroup> getVehicleMakeGroups() {
+    return vehicleMakeGroups;
   }
 
-  @JsonProperty("dataElementGroups")
-  public void setDataElementGroups(final List<DataElementGroup> dataElementGroups) {
-    this.dataElementGroups = dataElementGroups;
+  @JsonProperty("vehicleMakeGroups")
+  public void setVehicleMakeGroups(final List<VehicleMakeGroup> vehicleMakeGroups) {
+    this.vehicleMakeGroups = vehicleMakeGroups;
   }
 
   @Override
@@ -34,12 +34,12 @@ public class DataElement extends Data {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     if (!super.equals(o)) return false;
-    final DataElement that = (DataElement) o;
-    return Objects.equals(dataElementGroups, that.dataElementGroups);
+    final VehicleMake that = (VehicleMake) o;
+    return Objects.equals(vehicleMakeGroups, that.vehicleMakeGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), dataElementGroups);
+    return Objects.hash(super.hashCode(), vehicleMakeGroups);
   }
 }
