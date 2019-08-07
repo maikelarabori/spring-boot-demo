@@ -9,7 +9,7 @@ import java.util.Objects;
  * The super class holding common attributes to be reused
  * by its subclasses.
  */
-public class Vehicle implements Serializable {
+public class Base implements Serializable {
   private static final Long serialVersionUID = 1L;
 
   private String id;
@@ -37,9 +37,9 @@ public class Vehicle implements Serializable {
   public boolean equals(final Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    final Vehicle vehicle = (Vehicle) o;
-    return Objects.equals(id, vehicle.id) &&
-        Objects.equals(displayName, vehicle.displayName);
+    final Base base = (Base) o;
+    return Objects.equals(id, base.id) &&
+        Objects.equals(displayName, base.displayName);
   }
 
   @Override
