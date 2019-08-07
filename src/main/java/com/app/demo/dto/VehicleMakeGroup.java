@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(NON_NULL)
-public class VehicleMakeGroup extends Vehicle {
+public class VehicleMakeGroup extends Base {
   private static final Long serialVersionUID = 1L;
 
   private List<VehicleMake> vehicleMakes;
