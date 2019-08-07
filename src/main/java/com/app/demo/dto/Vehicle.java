@@ -1,4 +1,4 @@
-package com.app.external.dto;
+package com.app.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,7 +9,7 @@ import java.util.Objects;
  * The super class holding common attributes to be reused
  * by its subclasses.
  */
-public class Data implements Serializable {
+public class Vehicle implements Serializable {
   private static final Long serialVersionUID = 1L;
 
   private String id;
@@ -37,9 +37,9 @@ public class Data implements Serializable {
   public boolean equals(final Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    final Data data = (Data) o;
-    return Objects.equals(id, data.id) &&
-        Objects.equals(displayName, data.displayName);
+    final Vehicle vehicle = (Vehicle) o;
+    return Objects.equals(id, vehicle.id) &&
+        Objects.equals(displayName, vehicle.displayName);
   }
 
   @Override

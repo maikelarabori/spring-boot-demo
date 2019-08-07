@@ -3,7 +3,7 @@ package com.app.demo.http.endpoint;
 import static org.springframework.util.Assert.hasLength;
 import static org.springframework.util.Assert.notNull;
 
-import com.app.demo.dto.DataElementGroupRoot;
+import com.app.demo.dto.VehicleMakeGroupRoot;
 import com.app.demo.http.AuthWebClient;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
  * @see GetEndPoint
  */
 @Component
-public class DataElementGroupsGetEndPoint implements GetEndPoint<EndpointParams, DataElementGroupRoot> {
+public class VehicleMakeGroupsGetEndPoint implements GetEndPoint<EndpointParams, VehicleMakeGroupRoot> {
 
-  private static final String END_POINT = "/api/external/data-element-groups";
+  private static final String END_POINT = "/api/external/vehicles-makes-groups";
 
   private final AuthWebClient authWebClient;
 
-  public DataElementGroupsGetEndPoint(final AuthWebClient authWebClient) {
+  public VehicleMakeGroupsGetEndPoint(final AuthWebClient authWebClient) {
     this.authWebClient = authWebClient;
   }
 
@@ -36,15 +36,15 @@ public class DataElementGroupsGetEndPoint implements GetEndPoint<EndpointParams,
    * Attribute: expireAfterWrite=1m
    *
    * @param params to feed the endpoint query
-   * @return a DataElementGroupRoot object encapsulating the original response.
+   * @return a VehicleMakeGroupRoot object encapsulating the original response.
    */
   @Override
-  @Cacheable("dataElementGroupRoot")
-  public DataElementGroupRoot consume(final EndpointParams params) {
+  @Cacheable("vehicleMakeGroupRoot")
+  public VehicleMakeGroupRoot consume(final EndpointParams params) {
     notNull(params, "params: cannot be null");
     hasLength(params.getFields(), "params.fields: cannot be null/empty");
 
-    return authWebClient.get(DataElementGroupRoot.class,
+    return authWebClient.get(VehicleMakeGroupRoot.class,
         END_POINT + "?paging={hasPagination}&fields={fields}",
             params.getPaging(), params.getFields());
   }

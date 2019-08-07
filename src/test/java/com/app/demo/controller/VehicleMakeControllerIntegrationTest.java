@@ -1,6 +1,5 @@
 package com.app.demo.controller;
 
-import static com.app.demo.StubProvider.stubDataElementGroupRoot;
 import static org.junit.jupiter.api.parallel.ExecutionMode.SAME_THREAD;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -18,7 +17,8 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.subsecti
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.app.demo.dto.DataElementGroupRoot;
+import com.app.demo.StubProvider;
+import com.app.demo.dto.VehicleMakeRoot;
 import com.app.demo.http.endpoint.EndpointParams;
 import com.app.demo.http.endpoint.GetEndPoint;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +26,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.restdocs.RestDocumentationContextProvider;
@@ -36,14 +37,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
+@ExtendWith({MockitoExtension.class, RestDocumentationExtension.class, SpringExtension.class})
 @SpringBootTest
 @Execution(SAME_THREAD)
-@DisplayName("DataElementGroupController: integration test + doc")
-public class DataElementGroupControllerIntegrationTest {
+@DisplayName("VehicleMakeController: integration tests + doc")
+public class VehicleMakeControllerIntegrationTest {
 
   @MockBean
-  private GetEndPoint<EndpointParams, DataElementGroupRoot> dataElementGroupsGetEndPoint;
+  private GetEndPoint<EndpointParams, VehicleMakeRoot> vehicleMakesGetEndPoint;
 
   private MockMvc mockMvc;
   private RestDocumentationResultHandler documentationHandler;
@@ -61,38 +62,38 @@ public class DataElementGroupControllerIntegrationTest {
   }
 
   @Test
-  @DisplayName("Testing /api/data/element/groups with success")
-  public void getDataElementGroups() throws Exception {
+  @DisplayName("Testing /api/vehicles/makes with success")
+  public void getVehiclesMakes() throws Exception {
     // Given
-    final DataElementGroupRoot stubResponse = stubDataElementGroupRoot();
+    final VehicleMakeRoot stubResponse = StubProvider.stubVehicleMakeRoot();
 
     // When
-    when(dataElementGroupsGetEndPoint.consume(any(EndpointParams.class))).thenReturn(stubResponse);
+    when(vehicleMakesGetEndPoint.consume(any(EndpointParams.class))).thenReturn(stubResponse);
 
     // Then
-    this.mockMvc.perform(get("/api/data/element/groups")).andExpect(status().isFound())
+    this.mockMvc.perform(get("/api/vehicles/makes")).andExpect(status().isFound())
         .andDo(this.documentationHandler.document(
             responseFields(
-                subsectionWithPath("[]").description("The collection of groups").type(ARRAY),
-                fieldWithPath("[].id").description("The group id").type(STRING),
-                fieldWithPath("[].name").description("The group name").type(STRING),
-                fieldWithPath("[].members")
-                    .description("The list of members associated with this group").type(ARRAY)),
+                subsectionWithPath("[]").description("The collection of members").type(ARRAY),
+                fieldWithPath("[].id").description("The member id").type(STRING),
+                fieldWithPath("[].name").description("The member name").type(STRING),
+                fieldWithPath("[].groups")
+                    .description("The list of groups associated with this member").type(ARRAY)),
             responseHeaders(headerWithName("Content-Type")
                 .description("The Content-Type of the payload"))));
   }
 
   @Test
-  @DisplayName("Testing /api/data/element-groups with error: Not Found")
-  public void getDataElementGroups_notFound() throws Exception {
+  @DisplayName("Testing /api/vehicles/makes with error: Not Found")
+  public void getVehiclesMakes_notFound() throws Exception {
     // Given
-    final DataElementGroupRoot nullResponse = null;
+    final VehicleMakeRoot nullResponse = null;
 
     // When
-    when(dataElementGroupsGetEndPoint.consume(any(EndpointParams.class))).thenReturn(nullResponse);
+    when(vehicleMakesGetEndPoint.consume(any(EndpointParams.class))).thenReturn(nullResponse);
 
     // Then
-    this.mockMvc.perform(get("/api/data/element-groups"))
+    this.mockMvc.perform(get("/api/vehicles/makes"))
         .andExpect(status().isNotFound());
   }
 }

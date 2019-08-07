@@ -1,11 +1,11 @@
 package com.app.external.controller;
 
-import static com.app.external.data.DummyDataSource.createDummyElementGroups;
-import static com.app.external.data.DummyDataSource.createDummyElements;
+import static com.app.external.data.DummyDataSource.createDummyMakeGroups;
+import static com.app.external.data.DummyDataSource.createDummyMakes;
 import static org.springframework.http.HttpStatus.FOUND;
 
-import com.app.external.dto.DataElementGroupRoot;
-import com.app.external.dto.DataElementRoot;
+import com.app.external.dto.VehicleMakeGroupRoot;
+import com.app.external.dto.VehicleMakeRoot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
@@ -29,28 +29,28 @@ public final class DummyController {
   /**
    * This method is only used to simulate an external source of data.
    *
-   * @return a dummy list of data elements
+   * @return a dummy list of vehicle makes
    */
-  @GetMapping("/external/data-elements")
-  public ResponseEntity<DataElementRoot> getDataElements(
+  @GetMapping("/external/vehicles-makes")
+  public ResponseEntity<VehicleMakeRoot> getVehicleMakes(
       @RequestParam(required = false) final String paging,
       @RequestParam(required = false) final List<String> fields) {
     logger.info("Paging param: {}", paging);
     logger.info("Fields param: {}", fields);
-    return new ResponseEntity<>(createDummyElements(), FOUND);
+    return new ResponseEntity<>(createDummyMakes(), FOUND);
   }
 
   /**
    * This method is only used to simulate an external source of data.
    *
-   * @return a dummy list of data element groups
+   * @return a dummy list of vehicle make groups
    */
-  @GetMapping("/external/data-element-groups")
-  public ResponseEntity<DataElementGroupRoot> getDataElementGroups(
+  @GetMapping("/external/vehicles-makes-groups")
+  public ResponseEntity<VehicleMakeGroupRoot> getVehicleMakeGroups(
       @RequestParam(required = false) final String paging,
       @RequestParam(required = false) final List<String> fields) {
     logger.info("Paging param: {}", paging);
     logger.info("Fields param: {}", fields);
-    return new ResponseEntity<>(createDummyElementGroups(), FOUND);
+    return new ResponseEntity<>(createDummyMakeGroups(), FOUND);
   }
 }

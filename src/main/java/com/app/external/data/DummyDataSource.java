@@ -1,54 +1,54 @@
 package com.app.external.data;
 
-import com.app.external.dto.DataElement;
-import com.app.external.dto.DataElementGroup;
-import com.app.external.dto.DataElementGroupRoot;
-import com.app.external.dto.DataElementRoot;
+import com.app.external.dto.VehicleMake;
+import com.app.external.dto.VehicleMakeGroup;
+import com.app.external.dto.VehicleMakeGroupRoot;
+import com.app.external.dto.VehicleMakeRoot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DummyDataSource {
 
-  public static DataElementRoot createDummyElements() {
-    final DataElement element = new DataElement();
-    element.setDisplayName("aMemberName");
-    element.setId("aMemberId");
+  public static VehicleMakeRoot createDummyMakes() {
+    final VehicleMake vehicleMake = new VehicleMake();
+    vehicleMake.setDisplayName("aMakeName");
+    vehicleMake.setId("aMakeId");
 
-    final DataElementGroup group = new DataElementGroup();
+    final VehicleMakeGroup group = new VehicleMakeGroup();
     group.setId(String.valueOf(System.currentTimeMillis()));
 
-    final List<DataElementGroup> groups = new ArrayList<>();
+    final List<VehicleMakeGroup> groups = new ArrayList<>();
     groups.add(group);
 
-    final List<DataElement> elements = new ArrayList<>();
-    element.setDataElementGroups(groups);
-    elements.add(element);
+    final List<VehicleMake> vehicleMakes = new ArrayList<>();
+    vehicleMake.setVehicleMakeGroups(groups);
+    vehicleMakes.add(vehicleMake);
 
-    final DataElementRoot dataElementRoot = new DataElementRoot();
-    dataElementRoot.setDataElements(elements);
+    final VehicleMakeRoot vehicleMakeRoot = new VehicleMakeRoot();
+    vehicleMakeRoot.setVehicleMakes(vehicleMakes);
 
-    return dataElementRoot;
+    return vehicleMakeRoot;
   }
 
-  public static DataElementGroupRoot createDummyElementGroups() {
-    final DataElement element = new DataElement();
-    element.setId("aMemberId");
+  public static VehicleMakeGroupRoot createDummyMakeGroups() {
+    final VehicleMake vehicleMake = new VehicleMake();
+    vehicleMake.setId("aMakeId");
 
-    final DataElementGroup group = new DataElementGroup();
+    final VehicleMakeGroup group = new VehicleMakeGroup();
     group.setId(String.valueOf(System.currentTimeMillis()));
-    group.setDisplayName("aGroupName");
+    group.setDisplayName("aMakeGroupName");
 
-    final List<DataElement> elements = new ArrayList<>();
-    elements.add(element);
+    final List<VehicleMake> vehicleMakes = new ArrayList<>();
+    vehicleMakes.add(vehicleMake);
 
-    final List<DataElementGroup> groups = new ArrayList<>();
-    group.setDataElements(elements);
+    final List<VehicleMakeGroup> groups = new ArrayList<>();
+    group.setVehicleMakes(vehicleMakes);
     groups.add(group);
 
-    final DataElementGroupRoot dataElementGroupRoot = new DataElementGroupRoot();
-    dataElementGroupRoot.setDataElementGroups(groups);
+    final VehicleMakeGroupRoot vehicleMakeGroupRoot = new VehicleMakeGroupRoot();
+    vehicleMakeGroupRoot.setVehicleMakeGroups(groups);
 
-    return dataElementGroupRoot;
+    return vehicleMakeGroupRoot;
   }
 }

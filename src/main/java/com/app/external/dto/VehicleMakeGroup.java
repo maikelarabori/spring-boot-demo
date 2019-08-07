@@ -9,21 +9,21 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The representation of data element group.
+ * The representation of vehicle make group.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(NON_NULL)
-public class DataElementGroup extends Data {
+public class VehicleMakeGroup extends Vehicle {
   private static final Long serialVersionUID = 1L;
 
-  private List<DataElement> dataElements;
+  private List<VehicleMake> vehicleMakes;
 
-  public List<DataElement> getDataElements() {
-    return dataElements;
+  public List<VehicleMake> getVehicleMakes() {
+    return vehicleMakes;
   }
 
-  public void setDataElements(final List<DataElement> dataElements) {
-    this.dataElements = dataElements;
+  public void setVehicleMakes(final List<VehicleMake> vehicleMakes) {
+    this.vehicleMakes = vehicleMakes;
   }
 
   @Override
@@ -31,12 +31,12 @@ public class DataElementGroup extends Data {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     if (!super.equals(o)) return false;
-    final DataElementGroup that = (DataElementGroup) o;
-    return Objects.equals(dataElements, that.dataElements);
+    final VehicleMakeGroup that = (VehicleMakeGroup) o;
+    return Objects.equals(vehicleMakes, that.vehicleMakes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), dataElements);
+    return Objects.hash(super.hashCode(), vehicleMakes);
   }
 }
