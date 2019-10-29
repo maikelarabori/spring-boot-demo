@@ -15,14 +15,20 @@ external" REST invocations so minimize "external" calls. Remember that these "ex
 Finaly, the following steps will help you to setup a local environment for running and testing the application locally.
 The steps were tested only on MacOS, but it should work on Linux and Windows as well. Of course, you have to have a working connection with the Internet.
 
-## Downloading the project using GIT
-Assuming that GIT is installed correctly, in the command line choose a folder in your computer where the project will leave.
+## Prerequisites
+In order to run and compile the project correctly you will need:
 
+1. OpenJDK 13+
+2. Maven 3.5+
+3. Git
+4. Linux or MacOS
+
+## Downloading the project using Git
+Assuming that Git is installed correctly, in the command line choose a folder in your computer where the project will leave.
 
 Then run the command:
 
 > **git clone https://github.com/maikelarabori/spring-boot-demo.git**
-
 
 A new folder containing all the source code should be created inside your current folder.
 
@@ -32,12 +38,9 @@ A new folder containing all the source code should be created inside your curren
 
 Assuming that Maven 3.6.x and Java 1.8.x are installed correctly, in the command line go to the project's folder. *Ie.: /some/folder/spring-boot-demo*
 
-
 Then run the command:
 
-
 > **mvn spring-boot:run**
-
 
 The application will run at **http://localhost:8080**
 
@@ -58,19 +61,14 @@ The simulation to "external" REST services will require an username/password as 
 3. Hit the vehicle makes groups endpoint:
 > **curl --user user:password http://localhost:8080/api/vehicles/makes/groups**
 
-## Generating the REST API documentation
+## Running tests and generating the REST API documentation
 
 This application uses the Spring REST Docs module.
-The documentation will be generated every time the Maven goal "package" is run.
-So, to test it we can just run:
-> **mvn package**
+The documentation will be generated every time the Maven goal "test" is run.
+So, to generate it we can just run:
+> **mvn test**
 
 This will run all tests and generate an index.html, containing the REST API documentation, at:
 *spring-boot-demo/target/generated-docs/index.html*
 
 Open this file and you will find the REST API documentation.
-
-## Running only the unit and integration tests
-
-Simply run:
-> **mvn test**
